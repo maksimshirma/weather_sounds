@@ -1,0 +1,54 @@
+@mixin box-bg($url) {
+    background-image: url($url);
+    background-size: cover;
+}
+
+@mixin icon-img($url) {
+    background-image: url($url);
+    background-size: cover;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+
+    border: 1px solid #a9a697;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box__summer {
+    @include box-bg("../../assets/summer-bg.jpg")
+}
+
+.box__winter {
+    @include box-bg("../../assets/winter-bg.jpg")
+}
+
+.box__rainy {
+    @include box-bg("../../assets/rainy-bg.jpg")
+}
+
+.box-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.box-icon__weather__summer {
+    @include icon-img("../../assets/icons/sun.svg");
+}
+
+.box-icon__weather__winter {
+    @include icon-img("../../assets/icons/cloud-snow.svg");
+}
+
+.box-icon__weather__rainy {
+    @include icon-img("../../assets/icons/cloud-rain.svg");
+}
+
+.box-icon__pause {
+    @include icon-img("../../assets/icons/pause.svg");
+}

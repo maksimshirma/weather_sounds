@@ -1,0 +1,50 @@
+@mixin container-bg($url) {
+    background-image: url($url);
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    > .container-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        width: 50%;
+        height: fit-content;
+
+        > .container-content__title {
+            text-align: center;
+            padding: 20px 0;
+            color: #ed7038; 
+
+            font-size: 28px;
+        }
+
+        > .container-content__boxes {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        > .container-content__slider {
+            margin: 0 auto;
+        }
+    }
+}
+
+.container__summer {
+    @include container-bg("./assets/summer-bg.jpg")
+}
+
+.container__winter {
+    @include container-bg("./assets/winter-bg.jpg")
+}
+
+.container__rainy {
+    @include container-bg("./assets/rainy-bg.jpg")
+}
+

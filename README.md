@@ -1,15 +1,13 @@
 # 🚀 Welcome to your new awesome project!
 
-This project has been created using **webpack-cli**, you can now run
+Hello! This is the pet project called "Weather Sounds".
 
-```
-npm run build
-```
+By using this app, you can play different sounds of weather like sunny, rainy or winter day.
 
-or
+Technologies, that were used in this project: webpack, typescript, scss, react.
 
-```
-yarn build
-```
+To run this project you can use several commands.
 
-to bundle your application
+If you want to build this project in development mode, enter - npm run build:dev
+
+If you want to build this project in production mode, enter - npm run build:prod

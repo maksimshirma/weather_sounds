@@ -1,16 +1,13 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
+import { ISlider } from "../../interfaces";
 import "./slider.style.scss";
 
-interface ISlider {
-    setVolume: (volume: number) => void
-}
-
-export const Slider = ({ setVolume }: ISlider): React.ReactNode => { 
-    const handleMouseDown = (event: any) => {
+export const Slider: React.FC<ISlider> = ({ setVolume }) => { 
+    const handleMouseDown = (event: React.MouseEvent): void => {
         event.preventDefault();
         
-        const thumb = event.target;
-        const slider = event.target.closest(".slider");
+        const thumb = event.target as HTMLElement;
+        const slider = thumb.closest(".slider");
         const width = slider.clientWidth;
 
         let shiftX = event.clientX - thumb.getBoundingClientRect().left;
@@ -18,7 +15,7 @@ export const Slider = ({ setVolume }: ISlider): React.ReactNode => {
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
 
-        function onMouseMove(event: any) {
+        function onMouseMove(event: MouseEvent): void {
             let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
 
             if (newLeft < 0) {
@@ -32,7 +29,7 @@ export const Slider = ({ setVolume }: ISlider): React.ReactNode => {
             setVolume(Math.round(newLeft / width * 100));
         }
 
-        function onMouseUp() {
+        function onMouseUp(): void {
           document.removeEventListener('mouseup', onMouseUp);
           document.removeEventListener('mousemove', onMouseMove);
         }

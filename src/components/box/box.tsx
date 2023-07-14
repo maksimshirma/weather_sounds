@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
+import { WeatherType } from "../../types";
+import { IBox } from "../../interfaces";
 import "./box.styles.scss";
 
-type WeatherType = "summer" | "winter" | "rainy";
-
-interface IBox {
-    type: WeatherType
-    active: WeatherType
-    volume: number
-}
-
-export const Box = ({ type, active, volume }: IBox): React.ReactNode => {
+export const Box:React.FC<IBox> = ({ type, active, volume }) => {
     const [isPause, setPause] = useState<boolean>(true);
     const myRef = useRef<HTMLAudioElement>();
 
@@ -18,7 +12,7 @@ export const Box = ({ type, active, volume }: IBox): React.ReactNode => {
         return "rain"; 
     }
 
-    const togglePause = () => {
+    const togglePause = (): void => {
         if (isPause) {
             myRef.current.play();
         } else {
@@ -27,13 +21,13 @@ export const Box = ({ type, active, volume }: IBox): React.ReactNode => {
         setPause(prevState => !prevState);
     }
 
-    useEffect(() => {
+    useEffect((): void => {
         setPause(true);
         myRef.current.pause();
         myRef.current.currentTime = 0.0;
     }, [active]);
 
-    useEffect(() => {
+    useEffect((): void => {
         myRef.current.volume = volume / 100;
     }, [volume]);
 

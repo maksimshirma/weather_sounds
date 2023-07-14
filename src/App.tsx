@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Box, Slider } from "./components";
+import { WeatherType } from "./types";
 import "./App.scss";
 
-type WeatherType = "summer" | "winter" | "rainy";
-
-const App = (): React.ReactNode => {
+const App: React.FC = () => {
     const [active, setActive] = useState<WeatherType>("summer");
     const [volume, setVolume] = useState<number>(50);
 
-    const toggleActive = (event: any) => {
-        if (event.target.closest(".box").classList[0] === "box") {
-            setActive(event.target.closest(".box").id);
+    const toggleActive = (event: React.MouseEvent<HTMLElement>) => {
+        const target = event.target as HTMLElement;
+        if (target.closest(".box").classList[0] === "box") {
+            setActive(target.closest(".box").id as WeatherType);
         }
     }
 

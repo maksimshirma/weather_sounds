@@ -1,4 +1,4 @@
-# 🚀 Welcome to your new awesome project!
+# 🚀 Welcome to my new awesome project!
 
 Hello! This is the pet project called "Weather Sounds".
 
